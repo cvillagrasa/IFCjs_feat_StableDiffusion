@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="styles.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link
+            rel="stylesheet"
+            href="https://fonts.googleapis.com/css?family=Roboto:300,400,500,700&display=swap"
+    />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <title>IFC.js Hackathon 2022</title>
+</head>
+<body>
+    <div id="outer-layout">
+        <div id="header">
+            <div class="title">
+            <img class="spinning logo" src="static/ifcjs-logo-highlighted.svg" alt="logo">
+            <input hidden type="file" id="file-input">
+            <h1>Generate an AI background for your IFCs</h1>
+            </div>
+            <div>
+            <p>Powered by <a href="https://ifcjs.github.io/info/">IFC.js</a> and
+                <a href="https://stability.ai/blog/stable-diffusion-public-release">Stable Diffusion</a></p>
+            </div>
+        </div>
+        <div id="main">
+            <button id="file-input-button">Load IFC (*.ifc)</button>
+            <div id="viewer-container">
+                <script src="loadingAnimation.js"></script>
+            </div>
+            <div id="unloaded-message">
+                <label>
+                    No IFC files have been loaded yet.<br>
+                    Please, load a file to start experimenting!
+                </label>
+            </div>
+            <div id="sidebar">
+                <h2 class="subtitle">USAGE INSTRUCTIONS</h2>
+                <div id="instructions">
+                    <p>
+                        Firstly, load an IFC and use your mouse buttons to position the 3D view as preferred.
+                        While doing so, keep in mind that white spaces will be inpainted by the AI model.
+                        Then, fill the input fields below, which will guide the image generation process.
+                        When satisfied, click on the Generate button and see the result ;)
+                    </p>
+                </div>
+                <h2 class="subtitle">PROMPT</h2>
+                <label>Briefly describe the format of the requested image, referring to your IFC</label>
+                <input type="text" class="input-settings" id="model-description">
+                <label>Describe the context in which you wish the new image to be generated:</label>
+                <input type="text" class="input-settings" id="context-description">
+                <label>Describe the style in which you wish the new image to be generated:</label>
+                <input type="text" class="input-settings" id="style-description">
+                <button id="generate-button">GENERATE</button>
+                <div id="generating-block" hidden>
+                    <div id="timerDisplay">0' 0'' 0</div>
+                    <label id="generating-txt">
+                        Please, wait while the AI model generates the requested image.
+                        It usually takes around 1 minute...
+                    </label>
+                </div>
+                <img id="imgInpainted"></img>
+            </div>
+        </div>
+        <div id="footer">
+            <p>Built for the first IFC.js hackathon. 28th August 2022.</p>
+            <div id="author">
+            <p>Author: Carlos Villagrasa</p><p>&nbsp&nbsp&nbsp</p>
+            <a href="https://twitter.com/cvillagrasa" target="_blank" rel="noopener noreferrer" class="fa fa-twitter">
+            </a>
+            <a href="https://www.linkedin.com/in/carlos-villagrasa-silanes/" target="_blank" rel="noopener noreferrer"
+               class="fa fa-linkedin"></a>
+            <a href="https://github.com/cvillagrasa" target="_blank" rel="noopener noreferrer" class="fa fa-github"></a>
+            </div>
+        </div>
+    </div>
+    <script src="bundle.js"></script>
+</body>
+</html>
