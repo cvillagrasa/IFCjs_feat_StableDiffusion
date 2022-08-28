@@ -29,7 +29,17 @@
             </div>
         </div>
         <div id="main">
-            <button id="file-input-button">Load IFC (*.ifc)</button>
+            <div style="display: flex; flex-direction: row;">
+                <button id="file-input-button">Load IFC (*.ifc)</button>
+                <button id="load-examples">Load examples</button>
+                <div hidden id="ifc-examples-group">
+                    <button id="ifc-example1" class="ifc-examples">Example nº1</button>
+                    <button id="ifc-example2" class="ifc-examples">Example nº2</button>
+                    <button id="ifc-example3" class="ifc-examples">Example nº3</button>
+                    <button id="ifc-example4" class="ifc-examples">Example nº4</button>
+                    <button id="ifc-example5" class="ifc-examples">Example nº5</button>
+                </div>
+            </div>
             <div id="viewer-container">
                 <script src="loadingAnimation.js"></script>
             </div>

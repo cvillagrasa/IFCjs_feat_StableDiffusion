@@ -405,7 +405,7 @@ button:hover {
 button:before {
     top: 100%;
     left: 100%;
-    transition: all .7s;
+    transition: all .3s;
 }
 
 button:hover:before {
@@ -422,6 +422,25 @@ button:active:before {
     margin-top: 1.75vh;
     margin-left: 1.5vw;
     font-size: 1vh;
+}
+
+#load-examples {
+    margin-top: 1.75vh;
+    margin-left: 0.5vw;
+    font-size: 1vh;
+}
+
+#ifc-examples-group {
+    margin-top: 4vh;
+    margin-left: -3vw;
+    display: flex;
+    flex-direction: column;
+}
+
+.ifc-examples{
+    font-size: 1vh;
+    margin: 0.1vh;
+    background-color: #edb61e;
 }
 
 #author {

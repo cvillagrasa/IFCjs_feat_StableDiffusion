@@ -121901,6 +121901,13 @@ document.getElementById("style-description").value = "Studio photography";
 
 const fileInput = document.getElementById("file-input");
 const fileInputButton = document.getElementById("file-input-button");
+const ifcExamplesButton = document.getElementById("load-examples");
+const ifcExamplesGroup = document.getElementById("ifc-examples-group");
+const ifcExample1Button = document.getElementById("ifc-example1");
+const ifcExample2Button = document.getElementById("ifc-example2");
+const ifcExample3Button = document.getElementById("ifc-example3");
+const ifcExample4Button = document.getElementById("ifc-example4");
+const ifcExample5Button = document.getElementById("ifc-example5");
 const generateButton = document.getElementById("generate-button");
 const generatingBlock = document.getElementById("generating-block");
 const generatingText = document.getElementById("generating-txt");
@@ -121909,7 +121916,7 @@ const container = document.getElementById("viewer-container");
 const unloadedMessage = document.getElementById("unloaded-message");
 const loadingAnimation = document.getElementById("loading-animation");
 
-const viewer = new IfcViewerAPI({ container, backgroundColor: new Color(0xffffff) });
+let viewer = null;
 
 let [milliseconds, seconds, minutes] = [0, 0, 0];
 let timeElapsed = null;
@@ -121998,22 +122005,48 @@ function displayTimer(){
 
 
 async function loadIfc(url) {
+    if (viewer !== null) {
+        await viewer.dispose();
+    }
+    viewer = new IfcViewerAPI({ container, backgroundColor: new Color(0xffffff) });
+    ifcExamplesGroup.setAttribute("hidden", "");
+    unloadedMessage.style.display = "none";
+    loadingAnimation.style.display = "block";
     await viewer.IFC.setWasmPath("./");
     viewer.grid.setGrid();
     viewer.axes.setAxes();
     const model = await viewer.IFC.loadIfcUrl(url);
     await viewer.shadowDropper.renderShadow(model.modelID);
+    loadingAnimation.style.display = "none";
 }
 
 
 fileInputButton.onclick = () => fileInput.click();
 fileInput.onchange = async (changed) => {
     const ifcURL = URL.createObjectURL(changed.target.files[0]);
-    unloadedMessage.style.display = "none";
-    loadingAnimation.style.display = "block";
     await loadIfc(ifcURL);
-    loadingAnimation.style.display = "none";
 };
+
+
+ifcExamplesButton.onclick = () => {
+    if (ifcExamplesGroup.hasAttribute("hidden")) {
+        ifcExamplesGroup.removeAttribute("hidden");
+    } else {
+        ifcExamplesGroup.setAttribute("hidden", "");
+    }};
+
+let exampleFilenames = ["01", "02", "03", "04", "05"];
+exampleFilenames = exampleFilenames.map(num => `../sample_files/${num}.ifc`);
+const loadExampleFunctions = exampleFilenames.map((path) => {
+    return async () => {await loadIfc(path);};
+});
+
+
+ifcExample1Button.onclick = () => loadExampleFunctions[0]();
+ifcExample2Button.onclick = () => loadExampleFunctions[1]();
+ifcExample3Button.onclick = () => loadExampleFunctions[2]();
+ifcExample4Button.onclick = () => loadExampleFunctions[3]();
+ifcExample5Button.onclick = () => loadExampleFunctions[4]();
 
 
 generateButton.onclick = () => {
