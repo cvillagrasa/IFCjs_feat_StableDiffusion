@@ -365,7 +365,8 @@ html, body {
 
 button {
     --color: #673d30;
-    font-family: inherit;
+    /*font-family: inherit;*/
+    font-family: BebasNeueRegular;
     display: flex;
     align-items: center;
     justify-content: center;
@@ -376,11 +377,11 @@ button {
     /*line-height: 2.0em;*/
     position: relative;
     overflow: hidden;
-    border: 1px solid var(--color);
+    border: 2px solid var(--color);
     transition: color .5s;
     z-index: 1;
     font-size: 1.4vh;
-    border-radius: 3px;
+    border-radius: 0.5vh;
     font-weight: 500;
     color: var(--color);
     background-color: #ed761e;
@@ -391,8 +392,8 @@ button:before {
     position: absolute;
     z-index: -1;
     background: var(--color);
-    /*height: 150px;*/
-    /*width: 200px;*/
+    height: 150px;
+    width: 200px;
     border-radius: 50%;
 }
 
@@ -413,7 +414,7 @@ button:hover:before {
 }
 
 button:active:before {
-    background: #cd6115;
+    background: #e6c2a9;
     transition: background 0s;
 }
 
