@@ -119,12 +119,12 @@ async function loadIfc(url) {
     ifcExamplesGroup.setAttribute("hidden", "");
     unloadedMessage.style.display = "none";
     loadingAnimation.style.display = "block";
-    await viewer.IFC.setWasmPath("./");
-    viewer.grid.setGrid();
-    viewer.axes.setAxes();
-    const model = await viewer.IFC.loadIfcUrl(url);
-    await viewer.shadowDropper.renderShadow(model.modelID);
-    loadingAnimation.style.display = "none";
+    // await viewer.IFC.setWasmPath("./");
+    // viewer.grid.setGrid();
+    // viewer.axes.setAxes();
+    // const model = await viewer.IFC.loadIfcUrl(url);
+    // await viewer.shadowDropper.renderShadow(model.modelID);
+    // loadingAnimation.style.display = "none";
 }
 
 

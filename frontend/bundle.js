@@ -122012,19 +122012,19 @@ async function loadIfc(url) {
     ifcExamplesGroup.setAttribute("hidden", "");
     unloadedMessage.style.display = "none";
     loadingAnimation.style.display = "block";
-    await viewer.IFC.setWasmPath("./");
-    viewer.grid.setGrid();
-    viewer.axes.setAxes();
-    const model = await viewer.IFC.loadIfcUrl(url);
-    await viewer.shadowDropper.renderShadow(model.modelID);
-    loadingAnimation.style.display = "none";
+    // await viewer.IFC.setWasmPath("./");
+    // viewer.grid.setGrid();
+    // viewer.axes.setAxes();
+    // const model = await viewer.IFC.loadIfcUrl(url);
+    // await viewer.shadowDropper.renderShadow(model.modelID);
+    // loadingAnimation.style.display = "none";
 }
 
 
 fileInputButton.onclick = () => fileInput.click();
 fileInput.onchange = async (changed) => {
-    const ifcURL = URL.createObjectURL(changed.target.files[0]);
-    await loadIfc(ifcURL);
+    URL.createObjectURL(changed.target.files[0]);
+    await loadIfc();
 };
 
 
@@ -122038,7 +122038,7 @@ ifcExamplesButton.onclick = () => {
 let exampleFilenames = ["01", "02", "03", "04", "05"];
 exampleFilenames = exampleFilenames.map(num => `../sample_files/${num}.ifc`);
 const loadExampleFunctions = exampleFilenames.map((path) => {
-    return async () => {await loadIfc(path);};
+    return async () => {await loadIfc();};
 });
 
 

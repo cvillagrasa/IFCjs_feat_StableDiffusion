@@ -239,16 +239,6 @@ html, body {
     transition: all 0.3s ease 0s;
 }
 
-.props-divider {
-    height: 1px;
-    background-color: #aaaaaa;
-}
-
-.preview-logo {
-    width: 2vh;
-    animation: logo-spin 8s infinite 0s cubic-bezier(0.38, 0.01, 0, 0.99);
-}
-
 @keyframes logo-spin {
     0% {
         transform: rotate(0);
@@ -267,54 +257,16 @@ html, body {
     }
 }
 
-.props-entry {
-    margin-top: 0.5rem;
-    margin-bottom: 0.5rem;
-}
-
-.props-preview {
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    background-color: white;
-    box-shadow: 0 1px 12px 0 #555555;
-    width: 3rem;
-    height: 3rem;
-    border-radius: 100%;
-    pointer-events: all !important;
-}
-
-.props-dialog {
-    overflow-y: auto;
-    background-color: white;
-    padding: 1vh;
-    border-radius: 0.5rem;
-    box-shadow: 0 1px 12px 0 #555555;
-    pointer-events: all !important;
-    transition: box-shadow 0.1s, width 0.1s ease-out, height 0.1s ease-out, font-size 0.15s;
-    width: 20rem;
-    height: 20rem;
-
-}
-
-.collapsed {
-    visibility: collapse;
-    width: 0;
-    height: 0;
-    font-size: 0;
-}
-
-.props-dialog:hover {
-    box-shadow: 0 1px 26px 3px #777777;
-}
-
-
-/* From uiverse.io by @fanishah */
 .gegga {
     width: 0;
 }
 
 .snurra {
+    position: absolute;
+    width: 30vh;
+    height: 30vh;
+    margin-top: 13vh;
+    margin-left: 20vw;
     filter: url(#gegga);
 }
 
@@ -328,7 +280,7 @@ html, body {
 
 .halvan {
     animation: Snurra1 10s infinite linear;
-    stroke-dasharray: 180 800;
+    stroke-dasharray: 8vh 20vh;
     fill: none;
     stroke: url(#gradient);
     stroke-width: 16;
@@ -337,7 +289,7 @@ html, body {
 
 .strecken {
     animation: Snurra1 3s infinite linear;
-    stroke-dasharray: 26 54;
+    stroke-dasharray: 6vh 12vh;
     fill: none;
     stroke: url(#gradient);
     stroke-width: 16;
@@ -345,11 +297,12 @@ html, body {
 }
 
 .skugga {
-    filter: blur(5px);
+    width: 30vh;
+    height: 30vh;
+    filter: blur(1.5vh);
     opacity: 0.3;
     display: flex;
     position: absolute;
-    transform: translate(3px, 3px);
 }
 
 @keyframes Snurra1 {
@@ -358,23 +311,20 @@ html, body {
     }
 
     100% {
-        stroke-dashoffset: -403px;
+        stroke-dashoffset: -70vh;
     }
 }
 
 
 button {
     --color: #673d30;
-    /*font-family: inherit;*/
     font-family: BebasNeueRegular;
     display: flex;
     align-items: center;
     justify-content: center;
-    /*width: 5vw;*/
     padding-left: 0.75vw;
     padding-right: 0.75vw;
     height: 2vh;
-    /*line-height: 2.0em;*/
     position: relative;
     overflow: hidden;
     border: 2px solid var(--color);
