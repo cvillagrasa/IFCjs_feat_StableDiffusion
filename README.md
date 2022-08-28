@@ -1,6 +1,6 @@
 # IFC.js *feat* Stable Diffusion
 
-Welcome to the repository of my project for the 
+Welcome to the repository of my submission project for the 
 [IFC.js Crash Course](https://ifcjs.github.io/info/docs/Courses/Crash-course/) 2022, which aims to generate an AI 
 background over a view of your IFC files. 
 

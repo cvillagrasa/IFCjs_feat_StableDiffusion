@@ -57,7 +57,11 @@ html, body {
     justify-content: center;
     border: 3px solid gray;
     font-size: 1.5vh;
+}
 
+#repo {
+    margin-top: 0.75vh;
+    font-size: 0.75vh;
 }
 
 .h1 {
