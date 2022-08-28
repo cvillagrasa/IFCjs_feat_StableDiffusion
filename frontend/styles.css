@@ -183,14 +183,16 @@ html, body {
         top: 1vh;
         left: 0.5vw;
         width: 60vw;
-        height: 39.75vh;
+        height: 34.75vh;
+        border: 1px solid gray;
     }
 
     #sidebar {
         top: 1vh;
         left: 61.5vw;
         width: 38vw;
-        height: 81vh;
+        height: 71vh;
+        border: 1px solid gray;
     }
 
     #instructions {
@@ -200,10 +202,11 @@ html, body {
 
     #imgInpainted {
         position: absolute;
-        top: 40vh;
+        top: 35vh;
         left: -61.5vw;
         width: 60vw;
-        height: 39.75vh;
+        height: 34.75vh;
+        border: 1px solid gray;
     }
 
     .input-settings {
@@ -215,6 +218,17 @@ html, body {
         left: 0.25em;
         width: 60vw;
         height: 39.75vh;
+    }
+
+    #main {
+        height: 73.5vh;
+    }
+
+    #header {
+        border: 1px solid gray;
+    }
+    #footer {
+        border: 1px solid gray;
     }
 }
 
