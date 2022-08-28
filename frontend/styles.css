@@ -174,6 +174,46 @@ html, body {
     border: 3px solid gray;
 }
 
+@media (max-width: 1080px){
+    #viewer-container {
+        top: 1vh;
+        left: 0.5vw;
+        width: 60vw;
+        height: 39.75vh;
+    }
+
+    #sidebar {
+        top: 1vh;
+        left: 61.5vw;
+        width: 38vw;
+        height: 81vh;
+    }
+
+    #instructions {
+        width: 30vw;
+
+    }
+
+    #imgInpainted {
+        position: absolute;
+        top: 40vh;
+        left: -61.5vw;
+        width: 60vw;
+        height: 39.75vh;
+    }
+
+    .input-settings {
+        width: 30vw;
+    }
+
+    #unloaded-message {
+        top: 0.25em;
+        left: 0.25em;
+        width: 60vw;
+        height: 39.75vh;
+    }
+}
+
 @keyframes logo-spin {
     0% {
         transform: rotate(0deg);
@@ -378,8 +418,9 @@ button:active:before {
 }
 
 #file-input-button {
-    margin-top: 2vh;
-    margin-left: 1vw;
+    margin-top: 1.75vh;
+    margin-left: 1.5vw;
+    font-size: 1vh;
 }
 
 #author {
