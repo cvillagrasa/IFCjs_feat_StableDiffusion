@@ -105,7 +105,6 @@ function displayTimer(){
 
 
 async function loadIfc(url) {
-    await viewer.IFC.setWasmPath("node_modules/web-ifc/");
     viewer.grid.setGrid();
     viewer.axes.setAxes();
     const model = await viewer.IFC.loadIfcUrl(url);
