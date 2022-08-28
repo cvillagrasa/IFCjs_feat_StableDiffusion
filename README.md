@@ -4,9 +4,7 @@ Welcome to the repository of my submission project for the
 [IFC.js Crash Course](https://ifcjs.github.io/info/docs/Courses/Crash-course/) 2022, which aims to generate an AI 
 background over a view of your IFC files. 
 
-![](results/webapp_example.png)
-
-![](results/some_results.png)
+![](results/some_results2.png)
 
 The course has been an incredible journey,
 from basic web programming, to high level BIM libraries, going through vanilla *JavaScript* and *three.js*, 
@@ -33,6 +31,8 @@ model.
 Hence, joining these two milestones, I thought that a proof-of-concept website using both *IFC.js* and
 *Stable Diffusion* could be a nice idea to develop.
 
+![](results/some_results.png)
+
 The backend consists of a set of *Python* scripts using *PyTorch*, which have been adapted to be called from a
 simple *Flask* server. The mask is automatically obtained from the background of the provided image, so there is
 no need for the user to have to draw it on some kind of canvas.
@@ -42,6 +42,8 @@ As for the frontend, the resulting web application is
 and consists of a *web-ifc-viewer* container prepared to load and position at will any IFC file, to then fill 
 some text prompt fields asking for the desired background, and finally submit the request. At this point,
 the *three.js* scene is serialized and sent as a POST request to the backend server, altogether with the prompt.
+
+![](results/webapp_example.png)
 
 It is worth mentioning that on an 8GB VRAM consumer GPU, the backend takes over 50 seconds to generate the new image. 
 It's definitely not instant, but we must bear in mind that these kind of models are really big. In fact, *Stable Diffusion* is by far one of the least
