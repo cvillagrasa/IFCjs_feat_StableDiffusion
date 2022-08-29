@@ -163,6 +163,10 @@ ifcExample5Button.onclick = () => loadExampleFunctions[4]();
 
 
 generateButton.onclick = () => {
+    if (viewer === null) {
+        alert("Please, load an IFC file before!")
+        return
+    }
     generatingBlock.removeAttribute("hidden");
     generatingText.removeAttribute("hidden");
     if(timeElapsed !== null){
