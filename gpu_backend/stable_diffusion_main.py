@@ -14,6 +14,7 @@ from utils import SingletonMeta
 
 
 generator = csprng.create_random_device_generator('/dev/urandom')
+device = 'cuda'
 
 
 class StableDiffusionInpaintingPipeline(DiffusionPipeline):
@@ -138,7 +139,7 @@ class PipeImg(metaclass=SingletonMeta):
             revision="fp16",
             torch_dtype=torch.float16,
             use_auth_token=True
-        ).to("cuda")
+        ).to(device)
         pipeimg.safety_checker = self.dummy_nsfw_safety
         return pipeimg
 
