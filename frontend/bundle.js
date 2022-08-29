@@ -121943,7 +121943,7 @@ async function fetchWithTimeout(resource, options = {}) {
 
 
 function requestStableDiffusionInpainting(prompt, image){
-    fetchWithTimeout("http://127.0.0.1:5000/receiver",
+    fetchWithTimeout("https://cvillagrasa.ddns.net:5000/receiver",
         {
             method: 'POST',
             headers: {
