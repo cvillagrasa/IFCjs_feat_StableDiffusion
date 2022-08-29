@@ -121967,7 +121967,12 @@ function requestStableDiffusionInpainting(prompt, image){
                     generatingText.setAttribute("hidden", "");
                 });
         }else {
-            alert("something is wrong");
+            if(timeElapsed !== null){
+                clearInterval(timeElapsed);
+                [milliseconds, seconds, minutes] = [0, 0, 0];
+                timeElapsed = null;
+            }
+            timerRef.innerHTML = "UNABLE TO PROCESS THE REQUEST";
         }
     }).catch((err) => console.error(err));
 }

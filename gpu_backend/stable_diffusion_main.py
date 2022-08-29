@@ -128,10 +128,17 @@ class StableDiffusionInpaintingPipeline(DiffusionPipeline):
 
 class PipeImg(metaclass=SingletonMeta):
     def __init__(self):
+        self.running = False
         self.model = self.setup_inpainting_model()
 
     def __call__(self, *args, **kwargs):
-        return self.model(*args, **kwargs)
+        if self.running:
+            return {'sample': [None]}
+        else:
+            self.running = True
+            result = self.model(*args, **kwargs)
+            self.running = False
+            return result
 
     def setup_inpainting_model(self):
         pipeimg = StableDiffusionInpaintingPipeline.from_pretrained(
@@ -197,8 +204,8 @@ def infer(prompt, img, steps=250, scale=50, thres=235):
         images = pipeimg(
             prompt, init_image=img, mask_image=mask, num_inference_steps=steps, guidance_scale=scale,
             generator=generator
-        )["sample"]
-    return images[0]
+        )
+    return images["sample"][0]
 
 
 if __name__ == "__main__":

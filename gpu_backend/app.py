@@ -1,7 +1,8 @@
 import io
 import base64
 import numpy as np
-from PIL import Image
+from datetime import datetime
+from PIL import Image, ImageFont, ImageDraw
 from flask import Flask, request, jsonify
 from flask_cors import CORS
 from stable_diffusion_main import infer
@@ -48,6 +49,15 @@ def image_to_base64(image):
     return 'data:image/png;base64,' + img_bytes.decode('utf8')
 
 
+def image_when_busy(image):
+    draw = ImageDraw.Draw(image)
+    font = ImageFont.truetype('roboto.ttf', 16)
+    draw.text((140, 30), 'THE SERVER IS NOW BUSY', (255, 0, 0), font=font)
+    draw.text((90, 90), 'PLEASE, TRY AGAIN IN SOME SECONDS', (255, 0, 0), font=font)
+    draw.text((90, 150), 'I HAVE ONLY ONE GPU. CHEERS, Carlos', (255, 0, 0), font=font)
+    return image
+
+
 @app.route('/receiver', methods=['POST'])
 def postME():
     data = request.get_json()
@@ -57,13 +67,15 @@ def postME():
         img = img.resize(tuple([round(resize_factor * size) for size in img.size]))
     img = make_img_square(img)
     img_inpainted = infer(data['prompt'], img)
+    if img_inpainted is None:
+        img_inpainted = image_when_busy(img)
     img_inpainted_encoded = image_to_base64(img_inpainted)
-    img_inpainted.save('test.png')
+    img_inpainted.save(f'../res/{datetime.now().strftime("%Y%m%d_%H%M%S")}.png')
     print('image received!')
     return jsonify({'imgInpainted': img_inpainted_encoded})
 
 
 if __name__ == "__main__":
-    cert = '/etc/letsencrypt/live/cvillagrasa.ddns.net/fullchain.pem'
-    key = '/etc/letsencrypt/live/cvillagrasa.ddns.net/privkey.pem'
+    cert = '/home/carlos/Documentos/IFCjs/IFCjs_feat_StableDiffusion/ssl/fullchain.pem'
+    key = '/home/carlos/Documentos/IFCjs/IFCjs_feat_StableDiffusion/ssl/privkey.pem'
     app.run(host='0.0.0.0', port=5000, debug=False, ssl_context=(cert, key))

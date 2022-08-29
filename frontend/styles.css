@@ -343,13 +343,13 @@ button {
     justify-content: center;
     padding-left: 0.75vw;
     padding-right: 0.75vw;
-    height: 2vh;
+    height: 2.4vh;
     position: relative;
     overflow: hidden;
     border: 2px solid var(--color);
     transition: color .5s;
     z-index: 1;
-    font-size: 1.4vh;
+    font-size: 2vh;
     border-radius: 0.5vh;
     font-weight: 500;
     color: var(--color);
@@ -390,13 +390,13 @@ button:active:before {
 #file-input-button {
     margin-top: 1.75vh;
     margin-left: 1.5vw;
-    font-size: 1vh;
+    font-size: 1.3vh;
 }
 
 #load-examples {
     margin-top: 1.75vh;
     margin-left: 0.5vw;
-    font-size: 1vh;
+    font-size: 1.3vh;
 }
 
 #ifc-examples-group {
