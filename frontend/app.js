@@ -99,10 +99,9 @@ function inpaintingPipeline() {
 
 
 function offlinePipeline() {
-    const generatingBlock = document.getElementById("generating-block");
-    const generatingTxt = document.getElementById("generating-txt");
     generatingBlock.removeAttribute("hidden");
-    generatingTxt.innerHTML = "Sorry, the backend server is currently offline";
+    generatingText.removeAttribute("hidden");
+    generatingText.innerHTML = "Sorry, the backend server is currently offline";
 }
 
 
@@ -171,17 +170,17 @@ ifcExample5Button.onclick = () => loadExampleFunctions[4]();
 
 
 generateButton.onclick = () => {
-    if (viewer === null) {
-        alert("Please, load an IFC file before!")
-        return
-    }
-    generatingBlock.removeAttribute("hidden");
-    generatingText.removeAttribute("hidden");
-    if(timeElapsed !== null){
-        clearInterval(timeElapsed);
-        [milliseconds, seconds, minutes] = [0, 0, 0];
-    }
-    timeElapsed = setInterval(displayTimer, timerStep);
+    // if (viewer === null) {
+    //     alert("Please, load an IFC file before!")
+    //     return
+    // }
+    // generatingBlock.removeAttribute("hidden");
+    // generatingText.removeAttribute("hidden");
+    // if(timeElapsed !== null){
+    //     clearInterval(timeElapsed);
+    //     [milliseconds, seconds, minutes] = [0, 0, 0];
+    // }
+    // timeElapsed = setInterval(displayTimer, timerStep);
     // inpaintingPipeline();
     offlinePipeline();
 };
