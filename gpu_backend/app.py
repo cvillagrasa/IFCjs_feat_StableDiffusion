@@ -58,6 +58,11 @@ def image_when_busy(image):
     return image
 
 
+def prompt_to_text(prompt, label):
+    with open(f'../res/{label}.txt', "w") as f:
+        f.write(prompt)
+
+
 @app.route('/receiver', methods=['POST'])
 def postME():
     data = request.get_json()
@@ -70,7 +75,9 @@ def postME():
     if img_inpainted is None:
         img_inpainted = image_when_busy(img)
     img_inpainted_encoded = image_to_base64(img_inpainted)
-    img_inpainted.save(f'../res/{datetime.now().strftime("%Y%m%d_%H%M%S")}.png')
+    label = datetime.now().strftime("%Y%m%d_%H%M%S")
+    img_inpainted.save(f'../res/{label}.png')
+    prompt_to_text(data['prompt'], label)
     print('image received!')
     return jsonify({'imgInpainted': img_inpainted_encoded})
 
